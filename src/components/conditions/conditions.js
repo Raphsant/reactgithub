@@ -5,14 +5,18 @@ const conditions = (props) => {
     <div>
       {props.responseObj.cod === 200 ? (
         <div>
-          <p>
-            <strong>{props.responseObj.name}</strong>
-          </p>
-          <h1>Today's weather in {props.responseObj.main.name}</h1>
-          <p>
-            It is currently {Math.round(props.responseObj.main.temp)} degrees
-            out with {props.responseObj.weather[0].description}.
-          </p>
+          
+          <h1>Today's weather in {props.responseObj.name}</h1>
+          <div className="weather">
+            <h2>{Math.round(props.responseObj.main.temp)} degrees </h2>
+            <h4>({Math.round(props.responseObj.main.temp_max)} | {Math.round(props.responseObj.main.temp_min)})  </h4>
+            <h3>{props.responseObj.weather[0].description}.</h3>
+            <div className="weather-info__additional">Feels like: {Math.round(props.responseObj.main.feels_like)}</div>
+            <div className="weather-info__additional">Pressure: {Math.round(props.responseObj.main.pressure)}</div>
+            <div className="weather-info__additional">Humidity: {Math.round(props.responseObj.main.humidity)}</div>
+            <div className="weather-info__additional"></div>
+
+          </div>
         </div>
       ) : null}
     </div>

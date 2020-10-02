@@ -12,6 +12,7 @@ import conditions from "./conditions/conditions";
 const Weather = () => {
   const [responseObj, setResponseObj] = useState({});
   let [unit, setUnit] = useState('imperial')
+  
 
   function getWeather() {
     fetch(
@@ -35,9 +36,10 @@ const Weather = () => {
     <div> 
       
                 
-      <button onClick={getWeather}>Get Weather</button>
+      <button onClick={getWeather}>Click here to get your forecast</button>
       
       <Conditions responseObj={responseObj} />
+
 
     </div>
   );
