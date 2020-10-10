@@ -1,0 +1,17 @@
+.topContainer {
+  width: 100px;
+  height: 100px;
+}
+.header__container {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  height: max-content;
+  width: max-content;
+  margin-top: 10px;
+  margin: 25px;
+  flex: auto;
+
+  background-color: black;
+  opacity: 0.8;
+}

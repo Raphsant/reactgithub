@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import "./header.css";
 
 /**
  * Here is where the message containing the greeting message is going to be.
@@ -7,21 +8,14 @@ import React, { useState } from "react";
  */
 
 function Header() {
-    let [name, setName] = useState("");
-    const onNameChange = (event) => {
-        
-        setName(event.target.value);
-      };
+ const headerName = localStorage.getItem("name");
+  
 
-    name = prompt("Pleaser enter your name")
-    return (
-        <div>
-            <h1>Greetings, {name}</h1>
-        </div>
-
-        
-        
-    )
+  return (
+    <div className="header__container">
+      <h1>Greetings, {headerName}</h1>
+    </div>
+  );
 }
 
-export default Header
+export default Header;
