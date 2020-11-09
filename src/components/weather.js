@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { usersCollection } from "../data/firebase";
 
 import Conditions from "./conditions/conditions";
 
@@ -7,14 +8,24 @@ import Conditions from "./conditions/conditions";
 
 const Weather = () => {
   const [responseObj, setResponseObj] = useState({});
+  const docRef = usersCollection.doc(localStorage.getItem("username"));
+  const [city, setCity] = useState(null);
+  docRef
+    .get()
+    .then(function (doc) {
+      const data = doc.data();
+      setCity(data.city);
+      localStorage.setItem('city', city)
+    })
+    .catch(function (error) {
+      console.log("Error getting document:", error);
+    });
   let [unit] = useState("imperial");
 
   function GetWeather() {
     useEffect(() => {
       fetch(
-        `https://community-open-weather-map.p.rapidapi.com/weather?q=${localStorage.getItem(
-          "city"
-        )}&units=${unit}`,
+        `https://community-open-weather-map.p.rapidapi.com/weather?q=${localStorage.getItem('city')}&units=${unit}`,
         {
           method: "GET",
           headers: {
@@ -34,26 +45,10 @@ const Weather = () => {
   return (
     <div onLoad={GetWeather()}>
       <Conditions responseObj={responseObj} />
+      
     </div>
   );
 };
 
 export default Weather;
 
-// function Weather() {
-
-//     const GetWeather
-
-//   return (
-//     <div>
-//            <h2>Find Current Weather Conditions</h2>
-//            <div>
-//                {JSON.stringify(responseObj)}
-//            </div>
-//            <button onClick={Weather}>Get Forecast</button>
-//        </div>
-//   );
-
-// }
-
-// export default Weather;

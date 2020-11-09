@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { usersCollection } from "../data/firebase";
 import "./header.css";
 
 /**
@@ -8,8 +10,19 @@ import "./header.css";
  */
 
 function Header() {
- const headerName = localStorage.getItem("name");
-  
+  const [headerName, setHeaderName] = useState("");
+  const docRef = usersCollection.doc(localStorage.getItem("username"));
+
+  docRef
+    .get()
+    .then(function (doc) {
+      const data = doc.data();
+      setHeaderName(data.name);
+      console.log(headerName);
+    })
+    .catch(function (error) {
+      console.log("Error getting document:", error);
+    });
 
   return (
     <div className="header__container">

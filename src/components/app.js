@@ -1,35 +1,23 @@
 import React from "react";
-
-import Header from "./header";
-import SpotifyPlayer from "./spotify-player";
-import Weather from "./weather";
 import "./app.css";
-import Login from "./login";
+import "./login.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LoginPage from "../pages/login-page";
+import MainPage from "../pages/main-page";
 
 function App() {
-  function TryLogin() {
-    if (localStorage.getItem("name") !== null) {
-      return (
-        <div>
-          <Header />
-          <Weather />
-          <SpotifyPlayer />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Login />
-        </div>
-      );
-    }
+  if (localStorage.getItem("username") == null) {
+    return <LoginPage />;
   }
   return (
-    <div className="topContainer">
-      <div className="container">{TryLogin()}</div>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact>
+          <MainPage/>
+        </Route>     
+      </Switch>
+    </BrowserRouter>
   );
 }
-
 
 export default App;

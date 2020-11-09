@@ -8,11 +8,13 @@
     "@testing-library/user-event": "^7.2.1",
     "eleventy-plugin-embed-everything": "^1.9.2",
     "eleventy-plugin-embed-spotify": "^1.1.6",
+    "firebase": "^8.0.1",
     "jquery": "^3.5.1",
     "openweather-apis": "^4.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
