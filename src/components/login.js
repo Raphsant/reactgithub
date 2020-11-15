@@ -31,9 +31,7 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  function redirectToMain(){
-    window.location.reload(false);
-  }
+  
 
   const onLoginSubmit = async (event) => {
     event.preventDefault();
@@ -56,6 +54,7 @@ function Login() {
       console.error();
     }
     setIsLoading(false);
+    window.location.reload(false);
   };
 
   return (
@@ -81,7 +80,7 @@ function Login() {
             Please enter your city:{" "}
             <input type="text" value={city} onChange={onCityChange} />
           </p>
-          <button className="login-box__enter" type="submit" onClick={redirectToMain}>
+          <button className="login-box__enter" type="submit" >
           Enter
           
           </button>
