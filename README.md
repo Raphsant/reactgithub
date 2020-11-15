@@ -10,7 +10,7 @@ React app created for the Code sprint class
 
 Hub is a dashboard that features cards that display information important for our daily lives. Instead of checking several apps, why not check only one? That's the purpose behind Hub
 
-![hub](./src/images/hub.jpg)
+![hub](./src/images/hub.png)
 
 Such as:
 
