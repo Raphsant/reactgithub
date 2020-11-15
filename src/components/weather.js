@@ -3,6 +3,8 @@ import { usersCollection } from "../data/firebase";
 
 import Conditions from "./conditions/conditions";
 
+
+
 /**
  * This module will be connected the open weather API and will fetch for weather data based on the location provided by the user*/
 
@@ -15,7 +17,7 @@ const Weather = () => {
     .then(function (doc) {
       const data = doc.data();
       setCity(data.city);
-      localStorage.setItem('city', city)
+      localStorage.setItem("city", city);
     })
     .catch(function (error) {
       console.log("Error getting document:", error);
@@ -25,7 +27,9 @@ const Weather = () => {
   function GetWeather() {
     useEffect(() => {
       fetch(
-        `https://community-open-weather-map.p.rapidapi.com/weather?q=${localStorage.getItem('city')}&units=${unit}`,
+        `https://community-open-weather-map.p.rapidapi.com/weather?q=${localStorage.getItem(
+          "city"
+        )}&units=${unit}`,
         {
           method: "GET",
           headers: {
@@ -45,10 +49,8 @@ const Weather = () => {
   return (
     <div onLoad={GetWeather()}>
       <Conditions responseObj={responseObj} />
-      
     </div>
   );
 };
 
 export default Weather;
-

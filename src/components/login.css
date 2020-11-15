@@ -12,7 +12,7 @@ main {
   }
   
   .container {
-    width: fit-content;
+    width: 1;
     margin: 0 0 20px;
     padding: 10px;
   

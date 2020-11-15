@@ -1,21 +1,23 @@
 import React from "react";
 import "./app.css";
 import "./login.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {BrowserRouter, Route, Redirect } from "react-router-dom";
 import LoginPage from "../pages/login-page";
 import MainPage from "../pages/main-page";
 
 function App() {
-  if (localStorage.getItem("username") == null) {
-    return <LoginPage />;
-  }
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact>
-          <MainPage/>
-        </Route>     
-      </Switch>
+      
+        
+        <Route path="/">
+        {localStorage.getItem("username") ?  <Redirect to="/main" /> : <LoginPage/>}        
+        </Route>
+        <Route path="/main">
+        <MainPage/>
+        </Route>
+        
+      
     </BrowserRouter>
   );
 }

@@ -1,14 +1,14 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
-
+require('dotenv').config()
 const firebaseConfig = {
-  apiKey: "AIzaSyDGcHWPAof8KY9qFSlQqOM-CyfpynQzMMY",
-  authDomain: "hub-app-8d580.firebaseapp.com",
-  databaseURL: "https://hub-app-8d580.firebaseio.com",
+  apiKey: process.env.APIKEY,
+  authDomain: process.env.AUTHDOMAIN,
+  databaseURL: process.env.DATABASEURL,
   projectId: "hub-app-8d580",
-  storageBucket: "hub-app-8d580.appspot.com",
-  messagingSenderId: "639221412948",
-  appId: "1:639221412948:web:b7241e3b6cb3210e3929c1",
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID,
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -17,4 +17,4 @@ const db = firebase.firestore();
 const usersCollection = db.collection("users");
 
 export default db;
-export { usersCollection };
+export { db, usersCollection };
