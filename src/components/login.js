@@ -54,7 +54,7 @@ function Login() {
       console.error();
     }
     setIsLoading(false);
-    window.location.reload(false);
+    
   };
 
   return (
