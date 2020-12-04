@@ -8,18 +8,18 @@ import Conditions from "./conditions/conditions";
 
 const Weather = () => {
   const [responseObj, setResponseObj] = useState({});
-  const docRef = usersCollection.doc(localStorage.getItem("username"));
+  
   const [city, setCity] = useState(null);
-  docRef
-    .get()
-    .then(function (doc) {
-      const data = doc.data();
-      setCity(data.city);
-      localStorage.setItem("city", city);
-    })
-    .catch(function (error) {
-      console.log("Error getting document:", error);
-    });
+  // docRef
+  //   .get()
+  //   .then(function (doc) {
+  //     const data = doc.data();
+  //     setCity(data.city);
+  //     localStorage.setItem("city", city);
+  //   })
+  //   .catch(function (error) {
+  //     console.log("Error getting document:", error);
+  //   });
   let [unit] = useState("imperial");
 
   function GetWeather() {
