@@ -9,20 +9,10 @@ import "./header.css";
  * Could be Good morning, Good afternoon, or evening depending on the time of the day.
  */
 
-function Header() {
-  const [headerName, setHeaderName] = useState("");
-  const docRef = usersCollection.doc(localStorage.getItem("username"));
-
-  docRef
-    .get()
-    .then(function (doc) {
-      const data = doc.data();
-      setHeaderName(data.name);
-      console.log(headerName);
-    })
-    .catch(function (error) {
-      console.log("Error getting document:", error);
-    });
+function Header(props) {
+  const user = props.user;
+  console.log(`HEADER COMPONENT PROPS: ${user.displayName}`)
+  const headerName = user.displayName;
 
   return (
     <div className="header__container">

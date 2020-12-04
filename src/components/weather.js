@@ -3,8 +3,6 @@ import { usersCollection } from "../data/firebase";
 
 import Conditions from "./conditions/conditions";
 
-
-
 /**
  * This module will be connected the open weather API and will fetch for weather data based on the location provided by the user*/
 
@@ -27,15 +25,13 @@ const Weather = () => {
   function GetWeather() {
     useEffect(() => {
       fetch(
-        `https://community-open-weather-map.p.rapidapi.com/weather?q=${localStorage.getItem(
-          "city"
-        )}&units=${unit}`,
+        `https://community-open-weather-map.p.rapidapi.com/weather?q=chicago&units=${unit}`,
         {
           method: "GET",
           headers: {
-            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
             "x-rapidapi-key":
               "8663513905msh5590d4c73aa2beap1ac33cjsn8972ecb9adec",
+            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
           },
         }
       )

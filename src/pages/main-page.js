@@ -6,12 +6,13 @@ import SpotifyPlayer from '../components/spotify-player'
 import Weather from '../components/weather'
 
 
-function MainPage() {
+function MainPage(props) {
+    console.log(`one level up props ${props.user}`)
     return (
         <div>
-            <Header/>
+            <Header {...props}/>
             <Weather/>
-            <Events/>
+            <Events {...props}/>
             <SpotifyPlayer/>
 
         </div>
