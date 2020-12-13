@@ -21,6 +21,7 @@ function Events(props) {
   };
   const onLoginSubmit = async (event) => {
     event.preventDefault();
+
     setIsLoading(true);
     setDidError(false);
     try {

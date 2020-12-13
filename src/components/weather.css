@@ -5,10 +5,11 @@
   margin-top: 10px;
   margin: 25px;
   height: max-content;
-  width: max-content;
+  width: 400px;
   background-color: black;
   opacity: 0.8;
   backdrop-filter: blur(5px);
+  text-align: center;
 }
 
 .weather-info__additional {

@@ -17,6 +17,7 @@ function Header(props) {
   return (
     <div className="header__container">
       <h1>Greetings, {headerName}</h1>
+      <h3>This is your Hub</h3>
     </div>
   );
 }

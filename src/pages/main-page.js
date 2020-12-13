@@ -4,16 +4,16 @@ import Events from '../components/events'
 import Header from '../components/header'
 import SpotifyPlayer from '../components/spotify-player'
 import Weather from '../components/weather'
-
+import "./main-page.css"
 
 function MainPage(props) {
     console.log(`one level up props ${props.user}`)
     return (
-        <div>
-            <Header {...props}/>
-            <Weather/>
-            <Events {...props}/>
-            <SpotifyPlayer/>
+        <div className="grid-container">
+            <Header className="grid-elements" {...props}/>
+            <Weather className="grid-elements" {...props}/>
+            <Events className="grid-elements" {...props}/>
+            <SpotifyPlayer className="spotify"/>
 
         </div>
     )

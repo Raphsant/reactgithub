@@ -6,26 +6,29 @@ import Conditions from "./conditions/conditions";
 /**
  * This module will be connected the open weather API and will fetch for weather data based on the location provided by the user*/
 
-const Weather = () => {
+const Weather = (props) => {
+  const user = props.user;
   const [responseObj, setResponseObj] = useState({});
-  
-  const [city, setCity] = useState(null);
-  // docRef
-  //   .get()
-  //   .then(function (doc) {
-  //     const data = doc.data();
-  //     setCity(data.city);
-  //     localStorage.setItem("city", city);
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting document:", error);
-  //   });
+  const [city, setCity] = useState("");
+
+  async function getCity() {
+    usersCollection
+      .doc(user.uid)
+      .get()
+      .then(function (doc) {
+        const data = doc.data();
+        setCity(data.city);
+      });
+    return city;
+  }
+
   let [unit] = useState("imperial");
 
   function GetWeather() {
+    getCity();
     useEffect(() => {
       fetch(
-        `https://community-open-weather-map.p.rapidapi.com/weather?q=chicago&units=${unit}`,
+        `https://community-open-weather-map.p.rapidapi.com/weather?q=${city}&units=${unit}`,
         {
           method: "GET",
           headers: {
@@ -39,7 +42,7 @@ const Weather = () => {
         .then((response) => {
           setResponseObj(response);
         });
-    }, []);
+    }, [city]);
   }
 
   return (

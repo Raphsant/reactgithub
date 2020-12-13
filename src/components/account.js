@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { auth, provider, usersCollection } from "../data/firebase";
 import "./account.css";
-import glogo from "../images/glogo.webp"
+import glogo from "../images/glogo.webp";
 
 function Account(props) {
   const user = props.user;
@@ -21,6 +21,26 @@ function Account(props) {
     }
   };
 
+  const onAccountDetailsChange = (event) => {
+    setUserCity(event.target.value);
+  };
+
+  const onAccountDetailSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await usersCollection.doc(user.uid).set(
+        {
+          city: userCity,
+        },
+        { merge: true }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+
+    document.getElementById("input").value = "";
+  };
+
   const signOut = async () => {
     try {
       await auth.signOut();
@@ -35,9 +55,13 @@ function Account(props) {
       <>
         <div className="account__container">
           <h1>{user.displayName}</h1>
-          <form>
+          <form onSubmit={onAccountDetailSubmit}>
             <h3>Please enter your city </h3>
-            <input></input>
+            <input
+              id="input"
+              value={userCity}
+              onChange={onAccountDetailsChange}
+            ></input>
             <button className="account__button"> enter </button>
           </form>
         </div>
@@ -57,8 +81,10 @@ function Account(props) {
             Your dashboard to everything you need
           </h3>
           <h5 className="login-page__header">To proceed, please sign in</h5>
-          
-          <button id="glogo" className="login-page__button" onClick={signIn}><img src={glogo}/></button>
+
+          <button id="glogo" className="login-page__button" onClick={signIn}>
+            <img src={glogo} />
+          </button>
         </div>
       </>
     );
