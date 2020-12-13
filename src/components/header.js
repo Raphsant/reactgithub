@@ -11,7 +11,7 @@ import "./header.css";
 
 function Header(props) {
   const user = props.user;
-  console.log(`HEADER COMPONENT PROPS: ${user.displayName}`)
+  
   const headerName = user.displayName;
 
   return (

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { auth } from "../data/firebase";
+import AccountPage from "../pages/account-page";
+import MainPage from "../pages/main-page";
+import Nav from "./nav";
+import useUser from "./hooks/use-user";
 import "./app.css";
 import "./login.css";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-
-import MainPage from "../pages/main-page";
-import { provider, auth } from "../data/firebase";
-import Nav from "./nav";
-import AccountPage from "../pages/account-page";
 
 function AuthenticatedRouter(props) {
   const { isAuthenticated, children, ...routeProps } = props;
@@ -19,23 +19,17 @@ function AuthenticatedRouter(props) {
 }
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [isLoading, error, user] = useUser(auth);
   const isAuthenticated = user !== null;
+  if (error) console.error(error);
+  if (isLoading) return null;
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-      console.log("Auth State changed");
-      console.log(currentUser);
-      setUser(currentUser);
-    });
-    return unsubscribe;
-  }, []);
   return (
     <BrowserRouter>
       <Nav user={user} />
       <Switch>
         <AuthenticatedRouter path="/" exact isAuthenticated={isAuthenticated}>
-          <MainPage path="/" user={user} />
+          <MainPage user={user} />
         </AuthenticatedRouter>
         <Route path="/account">
           <AccountPage user={user} />

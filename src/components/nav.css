@@ -1,0 +1,23 @@
+.nav {
+  display: grid;
+  height: 30px;
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: 100px;
+  margin-left: 27px;
+}
+
+.nav__link {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 0 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  flex-wrap: wrap;
+  overflow: hidden;
+  break-inside: avoid;
+  text-decoration: none;
+  color: white;
+  border-color: white;
+}

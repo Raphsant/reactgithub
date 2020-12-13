@@ -1,11 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import db from "../data/firebase";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./login.css";
-import LoginPage from "../pages/login-page";
-
 
 function Login() {
   const [name, setName] = useState("");
@@ -16,7 +14,6 @@ function Login() {
   const [didError, setDidError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
-  
 
   const onNameChange = (event) => {
     setName(event.target.value);
@@ -30,8 +27,6 @@ function Login() {
   const onPasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
-  
 
   const onLoginSubmit = async (event) => {
     event.preventDefault();
@@ -54,7 +49,6 @@ function Login() {
       console.error();
     }
     setIsLoading(false);
-    
   };
 
   return (
@@ -80,9 +74,8 @@ function Login() {
             Please enter your city:{" "}
             <input type="text" value={city} onChange={onCityChange} />
           </p>
-          <button className="login-box__enter" type="submit" >
-          Enter
-          
+          <button className="login-box__enter" type="submit">
+            Enter
           </button>
         </div>
       </form>

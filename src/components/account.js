@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { auth, provider, usersCollection } from "../data/firebase";
+import "./account.css";
+import glogo from "../images/glogo.webp"
 
 function Account(props) {
   const user = props.user;
@@ -31,14 +33,15 @@ function Account(props) {
   if (user) {
     contents = (
       <>
-        <div className="login-page__container">
-          <h2>you are logged in</h2>
+        <div className="account__container">
           <h1>{user.displayName}</h1>
           <form>
             <h3>Please enter your city </h3>
             <input></input>
+            <button className="account__button"> enter </button>
           </form>
-
+        </div>
+        <div>
           <button className="login-page__button" onClick={signOut}>
             Sign out
           </button>
@@ -48,8 +51,15 @@ function Account(props) {
   } else {
     contents = (
       <>
-        <h1>hello</h1>
-        <button onClick={signIn}>Sign in</button>
+        <div className="sign-in__container">
+          <h1 className="login-page__header">Welcome to Hub</h1>
+          <h3 className="login-page__header">
+            Your dashboard to everything you need
+          </h3>
+          <h5 className="login-page__header">To proceed, please sign in</h5>
+          
+          <button id="glogo" className="login-page__button" onClick={signIn}><img src={glogo}/></button>
+        </div>
       </>
     );
   }
