@@ -7,6 +7,7 @@ import glogo from "../images/glogo.webp";
 function Account(props) {
   const user = props.user;
   const [userCity, setUserCity] = useState("");
+  const profilePic = user.photoURL;
 
   const signIn = async () => {
     try {
@@ -54,7 +55,14 @@ function Account(props) {
     contents = (
       <>
         <div className="account__container">
-          <h1>{user.displayName}</h1>
+          <div className="account-details">
+            <div className="account-details__name">
+              <h1>{user.displayName}</h1>
+            </div>
+            <div className="account-details__picture"> 
+              <img id="pfp" src={profilePic} alt="profilePicture"/>
+            </div>
+          </div>
           <form onSubmit={onAccountDetailSubmit}>
             <h3>Please enter your city </h3>
             <input

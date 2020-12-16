@@ -22,6 +22,7 @@ function App() {
   const [isLoading, error, user] = useUser(auth);
   const isAuthenticated = user !== null;
   if (error) console.error(error);
+  console.log(user);
   if (isLoading) return null;
 
   return (

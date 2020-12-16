@@ -11,11 +11,13 @@ import "./header.css";
 
 function Header(props) {
   const user = props.user;
+  const profilePic = user.photoURL;
   
   const headerName = user.displayName;
 
   return (
     <div className="header__container">
+      <img id="pfp" src={profilePic} alt="profilePicture"/>
       <h1>Greetings, {headerName}</h1>
       <h3>This is your Hub</h3>
     </div>

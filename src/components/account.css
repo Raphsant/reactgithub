@@ -1,5 +1,5 @@
 .account__container {
-  width: fit-content;
+  width: max-content;
   margin: 30px 27px 20px;
   padding: 10px;
   border-radius: 5px;
@@ -86,4 +86,23 @@ img{
     
     margin-left: 150px;
 }
+
+.account-details__name{
+  float: left;
+}
+
+
+
+
+.account-details__picture{
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  float: right;
+
+}
+
+
+
+
 
