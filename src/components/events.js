@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./event.css";
-import { db, usersCollection } from "../data/firebase";
+import { usersCollection } from "../data/firebase";
 import { useState } from "react";
 import { Delete } from "@material-ui/icons";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,11 +11,11 @@ function Events(props) {
   const user = props.user;
   const [title, setTitle] = useState("");
   const [todo, setTodo] = useState([]);
-
   const [date, setDate] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
   const [didError, setDidError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
   const onTitleChange = (event) => {
     setTitle(event.target.value);
   };
@@ -35,13 +35,14 @@ function Events(props) {
       setErrorMessage("Something went wrong, please try again!");
     }
     setIsLoading(false);
+    document.getElementById("input").value = "";
   };
 
   useEffect(() => {
     const onNext = (snapshot) => {
       const docs = snapshot.docs;
       setTodo(docs);
-      console.log(docs);
+      
     };
     const onError = (error) => {
       console.error(error);
@@ -65,7 +66,7 @@ function Events(props) {
             <label htmlFor="">
               <h3>Title:</h3>
             </label>
-            <input value={title} onChange={onTitleChange}></input>
+            <input id="input" value={title} onChange={onTitleChange}></input>
             <div>
               <label htmlFor="">
                 <h3>Date:</h3>
@@ -90,6 +91,7 @@ function Events(props) {
           const id = todoDoc.id;
           const titles = todoData.title;
           const dates = todoData.date.toDate().toString();
+          
           const deleteTodo = async () => {
             try {
               const docRef = usersCollection
@@ -105,7 +107,7 @@ function Events(props) {
             <ul>
               <li key={id}>
                 <h3>{titles}</h3>
-                <h5>{dates}</h5>
+                <h5>{dates}</h5>               
                 <button onClick={deleteTodo}>
                   <Delete />
                 </button>

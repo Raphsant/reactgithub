@@ -4,10 +4,29 @@ import { auth, provider, usersCollection } from "../data/firebase";
 import "./account.css";
 import glogo from "../images/glogo.webp";
 
+
+
+
 function Account(props) {
   const user = props.user;
   const [userCity, setUserCity] = useState("");
+  const [city, setCity] = useState("");
   const profilePic = user.photoURL;
+  const [isLoading, setIsLoading] = useState(false);
+  
+  async function getCity() {
+    usersCollection
+      .doc(user.uid)
+      .get()
+      .then(function (doc) {
+        const data = doc.data();
+        setCity(data.city);
+      });
+    return city;
+  }
+  
+
+  getCity()
 
   const signIn = async () => {
     try {
@@ -27,6 +46,7 @@ function Account(props) {
   };
 
   const onAccountDetailSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     try {
       await usersCollection.doc(user.uid).set(
@@ -35,6 +55,7 @@ function Account(props) {
         },
         { merge: true }
       );
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -59,10 +80,11 @@ function Account(props) {
             <div className="account-details__name">
               <h1>{user.displayName}</h1>
             </div>
-            <div className="account-details__picture"> 
-              <img id="pfp" src={profilePic} alt="profilePicture"/>
+            <div className="account-details__picture">
+              <img id="pfp" src={profilePic} alt="profilePicture" />
             </div>
           </div>
+          {isLoading && <h4>is loading please wait...</h4>}
           <form onSubmit={onAccountDetailSubmit}>
             <h3>Please enter your city </h3>
             <input
@@ -72,6 +94,7 @@ function Account(props) {
             ></input>
             <button className="account__button"> enter </button>
           </form>
+          <h5>Current city: {city}</h5>
         </div>
         <div>
           <button className="login-page__button" onClick={signOut}>
@@ -91,7 +114,7 @@ function Account(props) {
           <h5 className="login-page__header">To proceed, please sign in</h5>
 
           <button id="glogo" className="login-page__button" onClick={signIn}>
-            <img src={glogo} />
+            <img src={glogo} alt="google-logo" />
           </button>
         </div>
       </>

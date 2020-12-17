@@ -7,7 +7,7 @@ import Weather from '../components/weather'
 import "./main-page.css"
 
 function MainPage(props) {
-    console.log(`one level up props ${props.user}`)
+    
     return (
         <div className="grid-container">
             <Header className="grid-elements" {...props}/>

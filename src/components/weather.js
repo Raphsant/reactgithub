@@ -42,7 +42,7 @@ const Weather = (props) => {
         .then((response) => {
           setResponseObj(response);
         });
-    }, [city]);
+    }, []);
   }
 
   return (
