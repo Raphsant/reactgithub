@@ -1,10 +1,12 @@
 
 # hub-app
 
-NEW IN VERSION 0.2
+NEW IN VERSION 0.3
 
--TO DO MODULE
--YOU CAN LOG IN AND TRANSFER YOUR TO-DOS TO ANOTHER BROWSER
+USER LOGINS NOW PROPERLY IMPLEMENTED, USERS CAN NOW CHANGE THEIR CITY WHENEVER THEY WANT
+ACCOUNT PAGE
+ELECTRON APP (NOW IT WORKS ON DESKTOP)
+
 
 React app created for the Code sprint class
 
@@ -17,17 +19,10 @@ Such as:
 - Weather (displays the current weather)
 - Spotify (Shows your current song, in future builds a full media controller for spotify will be added)
 - To-do (You can add a list of To-Dos)
-- Calendar*
-- Emails*
+
 
 Hub can be used on any browser (PC or mobile)
 
 
-Next version will include
-
-- Calendar
-- emails
 
 
-
-(* Feature not available on the alpha 0.2 build.)
