@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { auth, provider, usersCollection } from "../data/firebase";
+import { auth, usersCollection } from "../data/firebase";
 import "./account.css";
-import glogo from "../images/glogo.webp";
+
 
 function Account(props) {
   const user = props.user;

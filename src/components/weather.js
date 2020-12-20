@@ -33,7 +33,7 @@ const Weather = (props) => {
           method: "GET",
           headers: {
             "x-rapidapi-key":
-              "8663513905msh5590d4c73aa2beap1ac33cjsn8972ecb9adec",
+              "8fbeacab73msh8c3e2003707fcf0p178839jsnc85e571f1009",
             "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
           },
         }
@@ -42,7 +42,7 @@ const Weather = (props) => {
         .then((response) => {
           setResponseObj(response);
         });
-    }, []);
+    }, [city]);
   }
 
   return (
