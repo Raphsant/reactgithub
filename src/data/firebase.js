@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 require("dotenv").config();
 const firebaseConfig = {
-  apiKey: "AIzaSyDGcHWPAof8KY9qFSlQqOM-CyfpynQzMMY",
-  authDomain: "hub-app-8d580.firebaseapp.com",
-  databaseURL: "https://hub-app-8d580.firebaseio.com",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: "hub-app-8d580",
-  storageBucket: "hub-app-8d580.appspot.com",
-  messagingSenderId: "639221412948",
-  appId: "1:639221412948:web:b7241e3b6cb3210e3929c1",
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
