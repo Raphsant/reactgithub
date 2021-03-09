@@ -12,9 +12,8 @@ function MainPage(props) {
       <Header className="grid-elements" {...props} />
       <Weather className="grid-elements" {...props} />
       <Events className="grid-elements" {...props} />
-      <SpotifyPlayer className="spotify" />
-      <div>I'm also trying to cause conflict</div>
-      <div>FIFTH TIME CAUSING CONFLICT</div>
+      
+      
     </div>
   );
 }
