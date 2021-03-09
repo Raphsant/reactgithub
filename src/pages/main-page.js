@@ -14,7 +14,7 @@ function MainPage(props) {
       <Events className="grid-elements" {...props} />
       <SpotifyPlayer className="spotify" />
       <div>I'm also trying to cause conflict</div>
-      <div>THIRD TIME CAUSING CONFLICT</div>
+      <div>FIFTH TIME CAUSING CONFLICT</div>
     </div>
   );
 }
