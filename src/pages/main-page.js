@@ -14,6 +14,7 @@ function MainPage(props) {
             <Weather className="grid-elements" {...props}/>
             <Events className="grid-elements" {...props}/>
             <SpotifyPlayer className="spotify"/>
+            <div> hello </div>
 
         </div>
     )
